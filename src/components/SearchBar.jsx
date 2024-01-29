@@ -9,7 +9,7 @@ const SearchBar = ({ searchInput }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue === "") return;
-    navigate(`/search/${inputValue}`);
+    navigate(`/search?q=${inputValue}`);
   };
 
   return (

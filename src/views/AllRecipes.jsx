@@ -78,7 +78,7 @@ const AllRecipes = () => {
               <div
                 key={recipe.id}
                 className="recipe-card"
-                onClick={() => handleCardClick(recipe.sys.id)}
+                onClick={() => handleCardClick(recipe.id)}
               >
                 <p className="cooking-time">
                   {recipe.preparation_time} minutes
