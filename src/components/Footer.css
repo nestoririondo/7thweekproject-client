@@ -1,0 +1,28 @@
+footer {
+    background-color: white;
+    bottom: 0;
+    width: 100%;
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    .go-up-btn {
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background-color: #a43636;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(141, 47, 47);
+      }
+      &:active {
+        background-color: rgb(126, 41, 41);
+      }
+    }
+  }
+}

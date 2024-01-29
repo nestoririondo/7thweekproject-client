@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(245, 245, 245);
+  font-family: "IBM Plex Serif", serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.outer-container {
+  background-image: url(./assets/header-left.svg),
+    url(./assets/header-right.svg),
+    linear-gradient(to right, rgb(164, 54, 54), rgb(255, 72, 72));
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right top;
+
+  .inner-container {
+    padding: 4rem;
+    padding-top: 5rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    .logo {
+      flex: 0 0 32%;
+      h1 {
+        cursor: pointer;
+        letter-spacing: 0.1rem;
+        font-family: "Tangerine", cursive;
+        font-size: 3rem;
+        font-weight: 700;
+      }
+    }
+    .search-bar {
+      flex: 1;
+      form {
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 2rem;
+        .form-group1 {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          label {
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+          }
+          select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+          }
+        }
+        .form-group2 {
+          display: flex;
+          flex: 2;
+          flex-direction: column;
+          label {
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+          }
+          input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            outline: none;
+          }
+        }
+        button {
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          font-size: 1rem;
+          cursor: pointer;
+          &:hover {
+            background-color: #eee;
+          }
+          &:active {
+            background-color: #ddd;
+          }
+        }
+      }
+    }
+  }
+}
+
+.all-recipes {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem;
+  min-height: calc(100vh-2rem);
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 2rem;
+    .back {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: none;
+      background-color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: #eee;
+      }
+      &:active {
+        background-color: #ddd;
+      }
+    }
+    p {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+  .recipe-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 2rem;
+    .recipe-card {
+      max-width: 350px;
+      overflow: hidden;
+      position: relative;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+      }
+      img {
+        border-radius: 5px;
+        width: 100%;
+        object-fit: cover;
+      }
+      .p {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        font-size: 1.2rem;
+        padding: 0.75rem;
+        box-sizing: border-box;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      .cooking-time {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 0.5rem;
+        font-size: 0.75rem;
+      }
+
+    }
+  }
+  .load-more-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem auto 2rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+    &:active {
+      background-color: #ddd;
+    }
+  }
+}
+
+.recent,
+.diet {
+  padding: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 4rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  .left {
+    min-width: 25%;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    p {
+      font-size: 1.5rem;
+    }
+    .view-all {
+      width: 10rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: #eee;
+      }
+      &:active {
+        background-color: #ddd;
+      }
+    }
+  }
+  .right {
+    flex: 1 0 65%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 2rem;
+    .recipe-card {
+      overflow: hidden;
+      position: relative;
+      height: 0;
+      padding-bottom: 75%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      img {
+        border-radius: 5px;
+        width: 100%;
+        object-fit: cover;
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
+
+.diet-outer {
+  background-color: #ffffff;
+}
+.loading {
+  left: 50%;
+  margin-top: 4rem;
+}
+.home {
+  min-height: calc(100vh - 4rem);
+}
+
+/* media queries */
+@media screen and (max-width: 768px) {
+  .outer-container {
+    .inner-container {
+      padding: 2rem;
+    }
+  }
+  .recent,
+  .all-recipes {
+    padding: 2rem;
+  }
+  .recipe-container {
+    padding: 0rem;
+  }
+}

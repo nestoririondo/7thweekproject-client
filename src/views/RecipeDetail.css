@@ -1,0 +1,95 @@
+.recipe-detail {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 2rem;
+    .back {
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: none;
+      background-color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: #eee;
+      }
+      &:active {
+        background-color: #ddd;
+      }
+    }
+    h2 {
+      text-align: center;
+      padding: 1rem;
+    }
+  }
+  .recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    .icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: -1rem;
+    }
+    .img-ing {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      img {
+        flex: 1 0 300px;
+        width: 100%;
+        object-fit: cover;
+        height: auto;
+        border-radius: 5px;
+      }
+      .ingredients {
+        flex: 1 0 300px;
+        margin-left: auto;
+        table {
+          margin-left: auto;
+          border-collapse: collapse;
+          border-radius: 5px;
+          th,
+          td {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+          }
+          td:nth-child(1) {
+            text-align: right;
+          }
+          tr:nth-child(even) {
+            background-color: #eee;
+          }
+        }
+      }
+    }
+    .instructions {
+      line-height: 2;
+      text-align: justify;
+      ol {
+        padding-left: 1rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .recipe-detail {
+    padding: 2rem;
+    .recipe-container {
+      padding: 0;
+      .img-ing {
+        flex-direction: column;
+        .ingredients {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

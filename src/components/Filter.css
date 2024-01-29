@@ -1,0 +1,33 @@
+.filter {
+  display: flex;
+  align-items: baseline;
+  justify-content: right;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  .filter-left,
+  .filter-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    select {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 0.75rem;
+    }
+    label {
+      font-size: 0.8rem;
+      margin-right: -.5rem;
+      white-space: nowrap;
+    }
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  .filter-right {
+    display: flex;
+    align-items: center;
+  }
+}
