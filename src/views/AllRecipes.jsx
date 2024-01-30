@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
-// import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
 import SERVER_URL from "../constants/server.js";
@@ -13,6 +12,7 @@ const fetchRecipes = async (
   amountSkipRecipes,
   setSortedRecipes
 ) => {
+  setLoading(true);
   const response = await axios.get(`${SERVER_URL}/recipes`, {
     params: {
       skip: amountSkipRecipes,
@@ -36,7 +36,6 @@ const AllRecipes = () => {
   const [sortedRecipes, setSortedRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // const { getRecipes } = useContentful();
   const navigate = useNavigate();
 
   useEffect(() => {

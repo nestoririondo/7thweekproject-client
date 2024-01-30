@@ -1,7 +1,7 @@
 import ascending from "../assets/order-ascending.png";
 import descending from "../assets/order-descending.png";
 import { useState, useEffect } from "react";
-import "./Filter.css";
+import "../styles/Filter.css";
 
 const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
   const [orderBy, setOrderBy] = useState("date");

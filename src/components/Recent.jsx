@@ -1,16 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
 import SERVER_URL from "../constants/server";
 
 const Recent = () => {
   const navigate = useNavigate();
-  // const { getRecipes } = useContentful();
-
   const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const fetchRecipes = async () => {
     try {

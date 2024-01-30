@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import useContentful from "../hooks/useContentful";
 import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter";
-import "./SearchResults.css";
+import "../styles/SearchResults.css";
 import axios from "axios";
 import SERVER_URL from "../constants/server";
 import { useSearchParams } from 'react-router-dom';
 
-// const { getRecipes } = useContentful();
-
 const fetchRecipes = async (keyword, setSortedRecipes, setRecipes) => {
   try {
-    const response = await axios.get(`${SERVER_URL}/recipes`, {
+    const response = await axios.get(`${SERVER_URL}/recipes/search`, {
       params: {
         keyword: keyword,
       },

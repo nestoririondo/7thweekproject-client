@@ -1,32 +1,18 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { BLOCKS, MARKS } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import "./RecipeDetail.css";
-// import useContentful from "../hooks/useContentful";
+import "../styles/RecipeDetail.css";
 import { useState, useEffect } from "react";
 import { LuChefHat } from "react-icons/lu";
 import { IoMdTime } from "react-icons/io";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
-import axios from 'axios';
-import SERVER_URL from "../constants/server"
+import axios from "axios";
+import SERVER_URL from "../constants/server";
+import ReactMarkdown from "react-markdown";
 
 const RecipeDetail = () => {
   const navigate = useNavigate();
-  // const options = {
-  //   renderMark: {
-  //     [MARKS.BOLD]: (text) => <strong>{text}</strong>,
-  //     [MARKS.ITALIC]: (text) => <em>{text}</em>,
-  //   },
-  //   renderNode: {
-  //     [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
-  //   },
-  // };
-
   const [selectedRecipe, setSelectedRecipe] = useState([]);
-
   const { id } = useParams();
-  // const { getRecipe } = useContentful();
 
   const handleBackClick = () => {
     navigate(-1);
@@ -36,7 +22,7 @@ const RecipeDetail = () => {
     const response = await axios.get(`${SERVER_URL}/recipes/${id}`);
     try {
       setSelectedRecipe(response.data);
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +51,7 @@ const RecipeDetail = () => {
               <p className="chef-name">{selectedRecipe.difficulty}</p>
             </div>
             <div className="img-ing">
-              {/* <img src={selectedRecipe.fields.images[0].fields.file.url} /> */}
+              <img src="https://placehold.co/600x400" />
               {/* <div className="ingredients">
                 {documentToReactComponents(
                   selectedRecipe.fields.ingredientList,
@@ -78,7 +64,9 @@ const RecipeDetail = () => {
                 selectedRecipe.fields.preparationInstructions,
                 options
               )} */}
-              {selectedRecipe.instructions}
+              <ReactMarkdown>
+                {selectedRecipe.instructions && selectedRecipe.instructions.replace(/\\n/g, '\n')}
+              </ReactMarkdown>
             </div>
           </div>
         </div>
