@@ -9,13 +9,10 @@ import { useSearchParams } from 'react-router-dom';
 
 const fetchRecipes = async (keyword, setSortedRecipes, setRecipes) => {
   try {
-    const response = await axios.get(`${SERVER_URL}/recipes/search`, {
-      params: {
-        keyword: keyword,
-      },
-    });
+    const response = await axios.get(`${SERVER_URL}/recipes/search?q=${keyword}`);
     setRecipes(response.data);
     setSortedRecipes(response.data);
+    console.log(response.data)
   } catch (error) {
     console.error(error);
   }
@@ -30,7 +27,6 @@ function SearchResults() {
 
   useEffect(() => {
     fetchRecipes(keyword, setRecipes, setSortedRecipes);
-    console.log(keyword)
   }, [keyword]);
 
   const handleCardClick = (id) => {
@@ -45,10 +41,10 @@ function SearchResults() {
           <button className="back" onClick={() => navigate(-1)}>
             Back
           </button>
-          {sortedRecipes === 0 && (
+          {sortedRecipes.length === 0 && (
             <p className="search-results">No recipe found</p>
           )}
-          {sortedRecipes >= 1 && (
+          {sortedRecipes.length >= 1 && (
             <p className="search-results">
               Search results for <span className="search-query">{keyword}</span>
             </p>
