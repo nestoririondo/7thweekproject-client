@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import Filter from "../components/Filter";
+// import Filter from "../components/Filter";
 import "../styles/SearchResults.css";
 import axios from "axios";
 import SERVER_URL from "../constants/server";

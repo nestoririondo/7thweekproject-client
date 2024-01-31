@@ -52,20 +52,25 @@ const RecipeDetail = () => {
             </div>
             <div className="img-ing">
               <img src="https://placehold.co/600x400" />
-              {/* <div className="ingredients">
-                {documentToReactComponents(
-                  selectedRecipe.fields.ingredientList,
-                  options
-                )}
-              </div> */}
+              <div className="ingredients">
+                <table>
+                    {selectedRecipe &&
+                      selectedRecipe.ingredients &&
+                      selectedRecipe.ingredients.map((ing, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{ing.amount}</td>
+                            <td>{ing.ingredient_name}</td>
+                          </tr>
+                        );
+                      })}
+                </table>
+              </div>
             </div>
             <div className="instructions">
-              {/* {documentToReactComponents(
-                selectedRecipe.fields.preparationInstructions,
-                options
-              )} */}
               <ReactMarkdown>
-                {selectedRecipe.instructions && selectedRecipe.instructions.replace(/\\n/g, '\n')}
+                {selectedRecipe.instructions &&
+                  selectedRecipe.instructions.replace(/\\n/g, "\n")}
               </ReactMarkdown>
             </div>
           </div>

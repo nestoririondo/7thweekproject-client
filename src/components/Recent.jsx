@@ -10,11 +10,7 @@ const Recent = () => {
 
   const fetchRecipes = async () => {
     try {
-      const response = await axios.get(`${SERVER_URL}/recipes`, {
-        params: {
-          limit: 6,
-        },
-      });
+      const response = await axios.get(`${SERVER_URL}/recipes?limit=6`);
       setRecipes(response.data);
     } catch (error) {
       console.log(error);

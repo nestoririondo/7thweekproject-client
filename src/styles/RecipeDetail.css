@@ -43,7 +43,7 @@
       flex-wrap: wrap;
       gap: 2rem;
       img {
-        flex: 1 0 300px;
+        flex: 1 0 400px;
         width: 100%;
         object-fit: cover;
         height: auto;
@@ -53,7 +53,7 @@
         flex: 1 0 300px;
         margin-left: auto;
         table {
-          margin-left: auto;
+          width: 100%;
           border-collapse: collapse;
           border-radius: 5px;
           th,

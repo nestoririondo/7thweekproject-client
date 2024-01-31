@@ -13,12 +13,9 @@ const fetchRecipes = async (
   setSortedRecipes
 ) => {
   setLoading(true);
-  const response = await axios.get(`${SERVER_URL}/recipes`, {
-    params: {
-      skip: amountSkipRecipes,
-      limit: 6,
-    },
-  });
+  const response = await axios.get(
+    `${SERVER_URL}/recipes?skip=${amountSkipRecipes}&limit=6`
+  );
   try {
     setRecipes((prevRecipes) => [...prevRecipes, ...response.data]);
     setSortedRecipes((prevRecipes) => [...prevRecipes, ...response.data]);
