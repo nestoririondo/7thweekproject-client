@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-// import Filter from "../components/Filter";
+import Filter from "../components/Filter";
 import "../styles/SearchResults.css";
 import axios from "axios";
 import SERVER_URL from "../constants/server";
@@ -41,22 +41,22 @@ function SearchResults() {
           <button className="back" onClick={() => navigate(-1)}>
             Back
           </button>
-          {sortedRecipes.length === 0 && (
+          {sortedRecipes && sortedRecipes.length === 0 && (
             <p className="search-results">No recipe found</p>
           )}
-          {sortedRecipes.length >= 1 && (
+          {sortedRecipes && sortedRecipes.length >= 1 && (
             <p className="search-results">
               Search results for <span className="search-query">{keyword}</span>
             </p>
           )}
         </div>
-        {/* {sortedRecipes && (
+        {sortedRecipes && (
           <Filter
             sortedRecipes={sortedRecipes}
             setSortedRecipes={setSortedRecipes}
             recipes={recipes}
           />
-        )} */}
+        )}
         <div className="recipe-container">
           {sortedRecipes &&
             sortedRecipes.map((recipe) => (
