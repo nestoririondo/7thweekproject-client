@@ -49,7 +49,7 @@ const Recent = () => {
                 className="recipe-card"
               >
                 <img src={`${IMAGES_URL}/${recipe.id}.jpg`} alt="" />
-                <p>{recipe.name}</p>
+                <p className="recipe-title">{recipe.name}</p>
               </div>
             ))}
         </div>
