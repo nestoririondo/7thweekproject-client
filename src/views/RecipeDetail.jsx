@@ -6,7 +6,7 @@ import { IoMdTime } from "react-icons/io";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
 import axios from "axios";
-import SERVER_URL from "../constants/server";
+import { SERVER_URL, IMAGES_URL } from "../constants/server";
 import ReactMarkdown from "react-markdown";
 
 const RecipeDetail = () => {
@@ -51,7 +51,7 @@ const RecipeDetail = () => {
               <p className="chef-name">{selectedRecipe.difficulty}</p>
             </div>
             <div className="img-ing">
-              <img src="https://placehold.co/600x400" />
+              <img src={`${IMAGES_URL}/${selectedRecipe.id}.jpg`} />
               <div className="ingredients">
                 <table>
                     {selectedRecipe &&

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
-import SERVER_URL from "../constants/server";
+import { SERVER_URL, IMAGES_URL } from "../constants/server";
 
 const Recent = () => {
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ const Recent = () => {
                 key={recipe.id}
                 className="recipe-card"
               >
-                <img src="https://placehold.co/400x250" alt="" />
+                <img src={`${IMAGES_URL}/${recipe.id}.jpg`} alt="" />
                 <p>{recipe.name}</p>
               </div>
             ))}
