@@ -1,36 +1,38 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import useContentful from "../hooks/useContentful";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter";
-import "./SearchResults.css";
+import "../styles/SearchResults.css";
+import axios from "axios";
+import SERVER_URL from "../constants/server";
+import { useSearchParams } from 'react-router-dom';
 
-const { getRecipes } = useContentful();
-
-const fetchRecipes = async (name, setSortedRecipes, setRecipes) => {
+const fetchRecipes = async (keyword, setSortedRecipes, setRecipes) => {
   try {
-    const response = await getRecipes(0, 1000, name);
-    setRecipes(response);
-    setSortedRecipes(response);
+    const response = await axios.get(`${SERVER_URL}/recipes/search?q=${keyword}`);
+    setRecipes(response.data);
+    setSortedRecipes(response.data);
+    console.log(response.data)
   } catch (error) {
     console.error(error);
   }
 };
 
 function SearchResults() {
-  const { name } = useParams();
+  const [searchParams] = useSearchParams();
+  const keyword = searchParams.get('q');
   const [recipes, setRecipes] = useState(null);
   const [sortedRecipes, setSortedRecipes] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchRecipes(name, setRecipes, setSortedRecipes);
-  }, [name]);
+    fetchRecipes(keyword, setRecipes, setSortedRecipes);
+  }, [keyword]);
 
   const handleCardClick = (id) => {
     navigate(`/recipe/${id}`);
   };
-  
+
   return (
     <div className="search-all">
       <SearchBar />
@@ -44,7 +46,7 @@ function SearchResults() {
           )}
           {sortedRecipes && sortedRecipes.length >= 1 && (
             <p className="search-results">
-              Search results for <span className="search-query">{name}</span>
+              Search results for <span className="search-query">{keyword}</span>
             </p>
           )}
         </div>
@@ -59,19 +61,16 @@ function SearchResults() {
           {sortedRecipes &&
             sortedRecipes.map((recipe) => (
               <div
-                key={recipe.sys.id}
+                key={recipe.id}
                 className="recipe-card"
-                onClick={() => handleCardClick(recipe.sys.id)}
+                onClick={() => handleCardClick(recipe.id)}
               >
                 <p className="cooking-time">
-                  {recipe.fields.cookingTime} minutes
+                  {recipe.preparation_time} minutes
                 </p>
 
-                <img
-                  src={recipe.fields.images[0].fields.file.url}
-                  alt={recipe.fields.title}
-                />
-                <p className="recipe-title">{recipe.fields.title}</p>
+                <img src="https://placehold.co/400x250" alt={recipe.name} />
+                <p className="recipe-title">{recipe.name}</p>
               </div>
             ))}
         </div>

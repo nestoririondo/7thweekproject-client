@@ -3,13 +3,12 @@ import { useState } from "react";
 
 const SearchBar = ({ searchInput }) => {
   const navigate = useNavigate();
-
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputValue === "") return;
-    navigate(`/search/${inputValue}`);
+    navigate(`/search?q=${inputValue}`);
   };
 
   return (

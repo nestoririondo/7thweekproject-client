@@ -8,7 +8,7 @@
   .title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     button {
       padding: 0.5rem 1rem;
       border-radius: 5px;
@@ -39,9 +39,10 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 2rem;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem;
+  align-content: center;
+  /* padding: 4rem; */
   .recipe-card {
+    margin: 0 auto;
     max-width: 350px;
     overflow: hidden;
     position: relative;

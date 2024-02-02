@@ -4,7 +4,7 @@ import RecipeDetail from "./views/RecipeDetail";
 import Home from "./views/Home";
 import Footer from "./components/Footer";
 import SearchResults from './views/SearchResults';
-import "./App.css";
+import "./styles/App.css";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/all" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
-        <Route path="/search/:name" element={<SearchResults />} />
+        <Route path="/search" element={<SearchResults />} />
       </Routes>
       <Footer />
     </>

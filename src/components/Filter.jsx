@@ -1,7 +1,7 @@
 import ascending from "../assets/order-ascending.png";
 import descending from "../assets/order-descending.png";
 import { useState, useEffect } from "react";
-import "./Filter.css";
+import "../styles/Filter.css";
 
 const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
   const [orderBy, setOrderBy] = useState("date");
@@ -13,21 +13,21 @@ const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
     if (cat === "date") {
       if (order === "asc") {
         newSortedRecipes.sort(
-          (a, b) => Date.parse(a.sys.createdAt) - Date.parse(b.sys.createdAt)
+          (a, b) => Date.parse(a.date) - Date.parse(b.date)
         );
       } else {
         newSortedRecipes.sort(
-          (a, b) => Date.parse(b.sys.createdAt) - Date.parse(a.sys.createdAt)
+          (a, b) => Date.parse(b.date) - Date.parse(a.date)
         );
       }
     } else if (cat === "cookingTime") {
       if (order === "asc") {
         newSortedRecipes.sort(
-          (a, b) => a.fields.cookingTime - b.fields.cookingTime
+          (a, b) => a.preparation_time - b.preparation_time
         );
       } else {
         newSortedRecipes.sort(
-          (a, b) => b.fields.cookingTime - a.fields.cookingTime
+          (a, b) => b.preparation_time - a.preparation_time
         );
       }
     }
@@ -35,16 +35,16 @@ const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
   };
 
   const handleFilter = (course) => {
-    let newSortedRecipes = [...recipes];
-    console.log(newSortedRecipes)
-    if (course === "all") {
-      setSortedRecipes(newSortedRecipes);
-    } else {
-      newSortedRecipes = newSortedRecipes.filter((recipe) =>
-        recipe.fields.keywords.includes(course)
-      );
-      setSortedRecipes(newSortedRecipes);
-    }
+    // let newSortedRecipes = [...recipes];
+    // console.log(newSortedRecipes)
+    // if (course === "all") {
+    //   setSortedRecipes(newSortedRecipes);
+    // } else {
+    //   newSortedRecipes = newSortedRecipes.filter((recipe) =>
+    //     recipe.keywords.includes(course)
+    //   );
+    //   setSortedRecipes(newSortedRecipes);
+    // }
   };
 
   useEffect(() => {

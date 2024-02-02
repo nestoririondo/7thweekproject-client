@@ -1,15 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
-import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
+import SERVER_URL from "../constants/server.js";
+import axios from "axios";
 
-const fetchRecipes = async (getRecipes, setRecipes, setLoading, amountSkipRecipes, setSortedRecipes) => {
-  const response = await getRecipes(amountSkipRecipes, 6);
+const fetchRecipes = async (
+  setRecipes,
+  setLoading,
+  amountSkipRecipes,
+  setSortedRecipes
+) => {
+  setLoading(true);
+  const response = await axios.get(
+    `${SERVER_URL}/recipes?skip=${amountSkipRecipes}&limit=6`
+  );
   try {
-    setRecipes((prevRecipes) => [...prevRecipes, ...response]);
-    setSortedRecipes((prevRecipes) => [...prevRecipes, ...response]);
+    setRecipes((prevRecipes) => [...prevRecipes, ...response.data]);
+    setSortedRecipes((prevRecipes) => [...prevRecipes, ...response.data]);
+    console.log(response);
   } catch (error) {
     console.log(error);
   } finally {
@@ -23,11 +33,10 @@ const AllRecipes = () => {
   const [sortedRecipes, setSortedRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { getRecipes } = useContentful();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchRecipes(getRecipes, setRecipes, setLoading, amountSkipRecipes, setSortedRecipes);
+    fetchRecipes(setRecipes, setLoading, amountSkipRecipes, setSortedRecipes);
   }, [amountSkipRecipes]);
 
   const loadMore = () => {
@@ -63,19 +72,16 @@ const AllRecipes = () => {
           {sortedRecipes &&
             sortedRecipes.map((recipe) => (
               <div
-                key={recipe.sys.id}
+                key={recipe.id}
                 className="recipe-card"
-                onClick={() => handleCardClick(recipe.sys.id)}
+                onClick={() => handleCardClick(recipe.id)}
               >
                 <p className="cooking-time">
-                  {recipe.fields.cookingTime} minutes
+                  {recipe.preparation_time} minutes
                 </p>
 
-                <img
-                  src={recipe.fields.images[0].fields.file.url}
-                  alt={recipe.fields.title}
-                />
-                <p className="recipe-title">{recipe.fields.title}</p>
+                <img src="https://placehold.co/400x250" alt={recipe.name} />
+                <p className="recipe-title">{recipe.name}</p>
               </div>
             ))}
         </div>
