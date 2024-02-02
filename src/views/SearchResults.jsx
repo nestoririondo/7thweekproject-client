@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter";
 import "../styles/SearchResults.css";
 import axios from "axios";
-import SERVER_URL from "../constants/server";
+import { SERVER_URL, IMAGES_URL } from "../constants/server";
 import { useSearchParams } from 'react-router-dom';
 
 const fetchRecipes = async (keyword, setSortedRecipes, setRecipes) => {
@@ -69,7 +69,7 @@ function SearchResults() {
                   {recipe.preparation_time} minutes
                 </p>
 
-                <img src="https://placehold.co/400x250" alt={recipe.name} />
+                <img src={`${IMAGES_URL}/${recipe.id}.jpg`} alt={recipe.name} />
                 <p className="recipe-title">{recipe.name}</p>
               </div>
             ))}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
-import SERVER_URL from "../constants/server.js";
+import { SERVER_URL, IMAGES_URL } from "../constants/server.js";
 import axios from "axios";
 
 const fetchRecipes = async (
@@ -80,7 +80,7 @@ const AllRecipes = () => {
                   {recipe.preparation_time} minutes
                 </p>
 
-                <img src="https://placehold.co/400x250" alt={recipe.name} />
+                <img src={`${IMAGES_URL}/${recipe.id}.jpg`} alt={recipe.name} />
                 <p className="recipe-title">{recipe.name}</p>
               </div>
             ))}
