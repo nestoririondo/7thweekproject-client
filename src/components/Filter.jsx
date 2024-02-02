@@ -79,7 +79,7 @@ const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
             />
           </button>
         </div>
-        <div className="filter-right">
+        {/* <div className="filter-right">
           <label htmlFor="course">Course</label>
           <select
             id="course"
@@ -92,7 +92,7 @@ const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
             <option value="main">Main Course</option>
             <option value="dessert">Dessert</option>
           </select>
-        </div>
+        </div> */}
       </div>
     </>
   );
