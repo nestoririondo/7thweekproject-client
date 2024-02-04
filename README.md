@@ -1,3 +1,7 @@
-# CookBook with Contentful 
+# CookBook with Node.js Server
 
-Cookbook that fetches data from our own server built with Node.js
+Recipes App that fetches data from our Node.js server and SQL database.
+
+# Deployed
+
+https://superlative-pegasus-d931a7.netlify.app/
