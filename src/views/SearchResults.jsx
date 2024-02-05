@@ -9,7 +9,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const fetchRecipes = async (keyword, setSortedRecipes, setRecipes) => {
   try {
-    const response = await axios.get(`${SERVER_URL}/recipes/search?q=${keyword}`);
+    const response = await axios.get(`${SERVER_URL}/recipes/?q=${keyword}`);
     setRecipes(response.data);
     setSortedRecipes(response.data);
     console.log(response.data)
